@@ -1,0 +1,91 @@
+#Generating source browse information for project SeekFree_Kinetis
+
+
+#Abbreviations
+cc = D$:\App\IAR\common\bin\SourceIndexer.exe
+ll = D$:\App\IAR\common\bin\PbdLink.exe
+bd = D$:\App\IAR\common\bin\makeBrowseData.exe
+
+
+
+#Rules
+rule index
+  depfile = $out.dep
+  command = $cc -out=$out -f $in
+rule link
+  command = $ll -M $out $in
+rule browsedata
+  command = $bd $in -output  $out
+
+
+
+#Build steps
+build common.pbi : index common.xcl
+build misc.pbi : index misc.xcl
+build MK60_adc.pbi : index MK60_adc.xcl
+build MK60_cmt.pbi : index MK60_cmt.xcl
+build MK60_dac.pbi : index MK60_dac.xcl
+build MK60_dma.pbi : index MK60_dma.xcl
+build MK60_flash.pbi : index MK60_flash.xcl
+build MK60_ftm.pbi : index MK60_ftm.xcl
+build MK60_gpio.pbi : index MK60_gpio.xcl
+build MK60_i2c.pbi : index MK60_i2c.xcl
+build MK60_lptmr.pbi : index MK60_lptmr.xcl
+build MK60_pit.pbi : index MK60_pit.xcl
+build MK60_port.pbi : index MK60_port.xcl
+build MK60_rtc.pbi : index MK60_rtc.xcl
+build MK60_sdhc.pbi : index MK60_sdhc.xcl
+build MK60_spi.pbi : index MK60_spi.xcl
+build MK60_systick.pbi : index MK60_systick.xcl
+build MK60_uart.pbi : index MK60_uart.xcl
+build MK60_wdog.pbi : index MK60_wdog.xcl
+build diskio.pbi : index diskio.xcl
+build ff.pbi : index ff.xcl
+build font.pbi : index font.xcl
+build key.pbi : index key.xcl
+build printf.pbi : index printf.xcl
+build SEEKFREE_18TFT.pbi : index SEEKFREE_18TFT.xcl
+build SEEKFREE_28LCD.pbi : index SEEKFREE_28LCD.xcl
+build SEEKFREE_7725.pbi : index SEEKFREE_7725.xcl
+build SEEKFREE_FUN.pbi : index SEEKFREE_FUN.xcl
+build SEEKFREE_IIC.pbi : index SEEKFREE_IIC.xcl
+build SEEKFREE_L3G4200D.pbi : index SEEKFREE_L3G4200D.xcl
+build SEEKFREE_MMA8451.pbi : index SEEKFREE_MMA8451.xcl
+build SEEKFREE_MPU6050.pbi : index SEEKFREE_MPU6050.xcl
+build SEEKFREE_MT9V032.pbi : index SEEKFREE_MT9V032.xcl
+build SEEKFREE_NRF24L01.pbi : index SEEKFREE_NRF24L01.xcl
+build SEEKFREE_OLED.pbi : index SEEKFREE_OLED.xcl
+build SEEKFREE_TSL1401.pbi : index SEEKFREE_TSL1401.xcl
+build system_MK66.pbi : index system_MK66.xcl
+build fastmath.pbi : index fastmath.xcl
+build I2C.pbi : index I2C.xcl
+build icm20602.pbi : index icm20602.xcl
+build jiaodu.pbi : index jiaodu.xcl
+build Kalman.pbi : index Kalman.xcl
+build matrix.pbi : index matrix.xcl
+build Turn_Back.pbi : index Turn_Back.xcl
+build handle.pbi : index handle.xcl
+build Otsumethod.pbi : index Otsumethod.xcl
+build car.pbi : index car.xcl
+build Control.pbi : index Control.xcl
+build pit.pbi : index pit.xcl
+build DATA.pbi : index DATA.xcl
+build flash.pbi : index flash.xcl
+build ElectADC.pbi : index ElectADC.xcl
+build Filter.pbi : index Filter.xcl
+build motor.pbi : index motor.xcl
+build pid.pbi : index pid.xcl
+build isr.pbi : index isr.xcl
+build main.pbi : index main.xcl
+build SeekFree_Kinetis_part0.pbi : link common.pbi misc.pbi MK60_adc.pbi MK60_cmt.pbi MK60_dac.pbi MK60_dma.pbi MK60_flash.pbi MK60_ftm.pbi
+build SeekFree_Kinetis_part1.pbi : link MK60_gpio.pbi MK60_i2c.pbi MK60_lptmr.pbi MK60_pit.pbi MK60_port.pbi MK60_rtc.pbi MK60_sdhc.pbi MK60_spi.pbi
+build SeekFree_Kinetis_part2.pbi : link MK60_systick.pbi MK60_uart.pbi MK60_wdog.pbi diskio.pbi ff.pbi font.pbi key.pbi printf.pbi
+build SeekFree_Kinetis_part3.pbi : link SEEKFREE_18TFT.pbi SEEKFREE_28LCD.pbi SEEKFREE_7725.pbi SEEKFREE_FUN.pbi SEEKFREE_IIC.pbi SEEKFREE_L3G4200D.pbi SEEKFREE_MMA8451.pbi SEEKFREE_MPU6050.pbi
+build SeekFree_Kinetis_part4.pbi : link SEEKFREE_MT9V032.pbi SEEKFREE_NRF24L01.pbi SEEKFREE_OLED.pbi SEEKFREE_TSL1401.pbi system_MK66.pbi fastmath.pbi I2C.pbi icm20602.pbi
+build SeekFree_Kinetis_part5.pbi : link jiaodu.pbi Kalman.pbi matrix.pbi Turn_Back.pbi handle.pbi Otsumethod.pbi car.pbi Control.pbi
+build SeekFree_Kinetis_part6.pbi : link pit.pbi DATA.pbi flash.pbi ElectADC.pbi Filter.pbi motor.pbi pid.pbi isr.pbi
+build SeekFree_Kinetis_part7.pbi : link main.pbi
+build SeekFree_Kinetis.pbd : link SeekFree_Kinetis_part0.pbi SeekFree_Kinetis_part1.pbi SeekFree_Kinetis_part2.pbi SeekFree_Kinetis_part3.pbi SeekFree_Kinetis_part4.pbi SeekFree_Kinetis_part5.pbi SeekFree_Kinetis_part6.pbi SeekFree_Kinetis_part7.pbi
+build SeekFree_Kinetis.pbw : browsedata SeekFree_Kinetis.pbd
+
+
